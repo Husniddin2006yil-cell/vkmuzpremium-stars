@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    >
+
+    <title>VKMuzPremium</title>
+
+    <!-- Telegram Mini App -->
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+
+    <!-- Дизайн -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- Верхняя панель -->
+    <header class="topbar">
+
+        <div>
+            <div class="brand">VKMUSICX</div>
+            <div class="subtitle">МУЗЫКАЛЬНАЯ ЛАБОРАТОРИЯ</div>
+        </div>
+
+        <button class="profile-btn" id="profileBtn">
+            ●
+        </button>
+
+    </header>
+
+
+    <!-- Главный экран -->
+    <section class="hero">
+
+        <div class="hero-badge">
+            ✦ НОВОЕ ПОКОЛЕНИЕ ЗВУКА
+        </div>
+
+        <h1>
+            ТВОЯ МУЗЫКА.<br>
+            <span>ТВОЁ ЗВУЧАНИЕ.</span>
+        </h1>
+
+        <p>
+            Обрабатывай музыку в новом качестве
+            прямо внутри Telegram.
+        </p>
+
+        <button class="primary-btn" id="startBtn">
+            <span>Открыть музыкальную лабораторию</span>
+            <span>→</span>
+        </button>
+
+    </section>
+
+
+    <!-- Демонстрация -->
+    <section class="demo-card">
+
+        <div class="section-label">
+            МУЗЫКАЛЬНАЯ ЛАБОРАТОРИЯ · АУДИОПЛЕЕР
+        </div>
+
+        <h2>Твоя музыка</h2>
+
+        <p>
+            Загрузи аудиофайл и слушай с эффектами прямо здесь.
+        </p>
+
+        <label class="upload-btn" for="audioFile">
+            <span>＋</span> Выбрать аудиофайл
+        </label>
+        <input class="file-input" id="audioFile" type="file" accept="audio/*">
+
+        <div class="track-panel" id="trackPanel" hidden>
+            <div class="track-info">
+                <span class="track-name" id="trackName">Трек не выбран</span>
+                <span class="track-status" id="trackStatus">Готово</span>
+            </div>
+
+            <div class="audio-visualizer" id="visualizer" aria-hidden="true">
+                <span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span>
+            </div>
+
+            <audio id="audioPlayer" preload="metadata"></audio>
+
+            <div class="player-row">
+                <button class="demo-btn play-btn" id="demoBtn" type="button" disabled>
+                    ▶ СЛУШАТЬ
+                </button>
+                <span class="time-label" id="timeLabel">0:00 / 0:00</span>
+            </div>
+            <input class="seek-control" id="seekBar" type="range" min="0" max="1000" value="0" aria-label="Позиция трека">
+
+            <div class="audio-controls">
+                <label class="range-control">
+                    <span>Громкость</span>
+                    <input id="volumeControl" type="range" min="0" max="1" step="0.01" value="0.9">
+                </label>
+
+                <label class="select-control">
+                    <span>Скорость</span>
+                    <select id="speedControl">
+                        <option value="0.75">0.75×</option>
+                        <option value="1" selected>1×</option>
+                        <option value="1.25">1.25×</option>
+                        <option value="1.5">1.5×</option>
+                    </select>
+                </label>
+
+                <button class="effect-btn" id="bassToggle" type="button" disabled>
+                    🔊 Усиление баса: ВЫКЛ
+                </button>
+                <button class="effect-btn" id="spatialToggle" type="button" disabled>
+                    🎧 Объёмный звук 8D: ВЫКЛ
+                </button>
+            </div>
+            <p class="privacy-note">Файл обрабатывается в браузере и не загружается на сервер.</p>
+        </div>
+
+    </section>
+
+
+    <!-- Возможности -->
+    <section class="features">
+
+        <div class="section-title">
+            Возможности VKMUSICX
+        </div>
+
+        <div class="feature-grid">
+
+            <div class="feature">
+                <div class="feature-icon">⑧</div>
+                <h3>ЗВУК 8D</h3>
+                <p>Объёмный звук</p>
+            </div>
+
+            <div class="feature">
+                <div class="feature-icon">〽</div>
+                <h3>УСИЛЕНИЕ БАСА</h3>
+                <p>Мощный бас</p>
+            </div>
+
+            <div class="feature">
+                <div class="feature-icon">⚡</div>
+                <h3>БЫСТРАЯ ОБРАБОТКА</h3>
+                <p>Быстрая обработка</p>
+            </div>
+
+            <div class="feature">
+                <div class="feature-icon">♬</div>
+                <h3>СОХРАНЕНИЕ</h3>
+                <p>Сохранение музыки</p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Тарифы -->
+    <section class="pricing">
+
+        <div class="section-title">
+            Премиум-доступ
+        </div>
+
+
+        <!-- PRO -->
+        <div class="price-card">
+
+            <div class="plan-tag">
+                PRO
+            </div>
+
+            <div class="old-price">
+                ⭐149
+            </div>
+
+            <div class="price">
+                ⭐99
+                <small>/ 30 дней · автопродление</small>
+            </div>
+
+            <ul>
+                <li>✓ Объёмный звук 8D</li>
+                <li>✓ Усиление баса</li>
+                <li>✓ Сохранение музыки</li>
+                <li>✓ Быстрая обработка</li>
+            </ul>
+
+            <button
+                class="buy-btn"
+                data-plan="pro"
+                data-price="99"
+            >
+                Получить PRO
+            </button>
+
+        </div>
+
+
+        <!-- PREMIUM -->
+        <div class="price-card premium-card">
+
+            <div class="popular">
+                МАКСИМУМ ВОЗМОЖНОСТЕЙ
+            </div>
+
+            <div class="plan-tag">
+                PREMIUM
+            </div>
+
+            <div class="old-price">
+                ⭐499
+            </div>
+
+            <div class="price">
+                ⭐299
+                <small>/ 30 дней · автопродление</small>
+            </div>
+
+            <ul>
+                <li>✓ Всё из PRO</li>
+                <li>✓ Без ограничений</li>
+                <li>✓ Максимальное усиление баса</li>
+                <li>✓ Приоритет №1</li>
+                <li>✓ Эксклюзивные эффекты</li>
+            </ul>
+
+            <button
+                class="buy-btn premium-buy"
+                data-plan="premium"
+                data-price="299"
+            >
+                Получить PREMIUM
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- Профиль -->
+    <section class="user-card">
+
+        <div class="user-avatar">
+            ♫
+        </div>
+
+        <div>
+
+            <div class="user-name" id="userName">
+                ПОЛЬЗОВАТЕЛЬ VKMUSICX
+            </div>
+
+            <div class="user-status" id="userStatus">
+                БЕСПЛАТНЫЙ ТАРИФ
+            </div>
+
+            <button class="cancel-subscription-btn" id="cancelSubscriptionBtn" type="button" hidden>
+                Отключить автопродление
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <footer>
+        © 2026 VKMUSICX
+    </footer>
+
+</div>
+
+
+<!-- JavaScript -->
+<script src="app.js"></script>
+
+</body>
+</html>

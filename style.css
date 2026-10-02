@@ -1,0 +1,857 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
+}
+
+:root {
+
+    --bg: #050507;
+    --card: #0d0d11;
+
+    --blue: #00eaff;
+    --blue2: #008cff;
+
+    --purple: #8b5cff;
+
+    --text: #ffffff;
+    --muted: #858590;
+
+    --border: rgba(0, 234, 255, 0.25);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+
+    background:
+        radial-gradient(
+            circle at 50% -10%,
+            rgba(0, 234, 255, 0.15),
+            transparent 40%
+        ),
+        var(--bg);
+
+    color: var(--text);
+
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "SF Pro Display",
+        "Segoe UI",
+        sans-serif;
+
+    min-height: 100vh;
+}
+
+button {
+    font: inherit;
+    border: 0;
+    cursor: pointer;
+}
+
+.app {
+
+    width: 100%;
+    max-width: 600px;
+
+    margin: auto;
+
+    padding:
+        18px
+        18px
+        50px;
+}
+
+
+/* Верхняя панель */
+
+.topbar {
+
+    display: flex;
+
+    justify-content:
+        space-between;
+
+    align-items: center;
+
+    padding:
+        10px 0 30px;
+}
+
+.brand {
+
+    font-size: 23px;
+
+    font-weight: 900;
+
+    letter-spacing: 2px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #00eaff,
+            #8b5cff
+        );
+
+    -webkit-background-clip: text;
+
+    color: transparent;
+}
+
+.subtitle {
+
+    font-size: 9px;
+
+    color: #707079;
+
+    letter-spacing: 3px;
+
+    margin-top: 3px;
+}
+
+.profile-btn {
+
+    width: 42px;
+    height: 42px;
+
+    border-radius: 50%;
+
+    background: #111117;
+
+    border:
+        1px solid
+        var(--border);
+
+    color: var(--blue);
+
+    box-shadow:
+        0 0 20px
+        rgba(0, 234, 255, 0.12);
+}
+
+
+/* Главный экран */
+
+.hero {
+
+    text-align: center;
+
+    padding:
+        35px 8px 55px;
+}
+
+.hero-badge {
+
+    display: inline-block;
+
+    padding:
+        7px 12px;
+
+    border:
+        1px solid
+        rgba(0, 234, 255, 0.25);
+
+    border-radius: 50px;
+
+    color: var(--blue);
+
+    font-size: 9px;
+
+    letter-spacing: 1.5px;
+
+    margin-bottom: 25px;
+}
+
+.hero h1 {
+
+    font-size: 42px;
+
+    line-height: 0.98;
+
+    letter-spacing: -2px;
+
+    font-weight: 900;
+}
+
+.hero h1 span {
+
+    color: var(--blue);
+
+    text-shadow:
+        0 0 25px
+        rgba(0, 234, 255, 0.35);
+}
+
+.hero p {
+
+    color: var(--muted);
+
+    max-width: 350px;
+
+    margin:
+        20px auto 28px;
+
+    line-height: 1.5;
+}
+
+
+/* Кнопки */
+
+.primary-btn,
+.buy-btn {
+
+    width: 100%;
+
+    padding:
+        17px 20px;
+
+    border-radius: 17px;
+
+    color: #001014;
+
+    background:
+        linear-gradient(
+            135deg,
+            #00f0ff,
+            #00aaff
+        );
+
+    font-weight: 800;
+
+    box-shadow:
+        0 10px 35px
+        rgba(0, 220, 255, 0.18);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    transition: 0.15s;
+}
+
+.primary-btn:active,
+.buy-btn:active,
+.demo-btn:active {
+
+    transform:
+        scale(0.96);
+}
+
+
+/* Демонстрация */
+
+.demo-card {
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,0.04),
+            rgba(255,255,255,0.01)
+        );
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius: 25px;
+
+    padding:
+        27px 20px;
+
+    text-align: center;
+
+    box-shadow:
+        0 0 50px
+        rgba(0, 234, 255, 0.06);
+
+    margin-bottom: 60px;
+}
+
+.section-label {
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+    color: var(--blue);
+
+    margin-bottom: 12px;
+}
+
+.demo-card h2 {
+    font-size: 27px;
+}
+
+.demo-card p {
+
+    color: var(--muted);
+
+    margin-top: 5px;
+}
+
+
+/* Анимация звука */
+
+.audio-visualizer {
+
+    height: 70px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 4px;
+
+    margin: 25px 0;
+}
+
+.audio-visualizer span {
+
+    width: 4px;
+
+    height: 20px;
+
+    border-radius: 10px;
+
+    background: var(--blue);
+
+    opacity: 0.8;
+}
+
+.audio-visualizer.playing span {
+
+    animation:
+        wave
+        0.7s
+        infinite
+        alternate;
+}
+
+.audio-visualizer.playing
+span:nth-child(2n) {
+
+    animation-delay: .15s;
+}
+
+.audio-visualizer.playing
+span:nth-child(3n) {
+
+    animation-delay: .3s;
+}
+
+@keyframes wave {
+
+    from {
+        height: 10px;
+    }
+
+    to {
+        height: 60px;
+    }
+}
+
+
+/* Кнопка DEMO */
+
+.demo-btn {
+
+    padding:
+        13px 20px;
+
+    border-radius: 50px;
+
+    background: transparent;
+
+    color: var(--blue);
+
+    border:
+        1px solid
+        var(--blue);
+
+    font-weight: 700;
+}
+
+
+/* Возможности */
+
+.features {
+
+    margin-bottom: 60px;
+}
+
+.section-title {
+
+    font-size: 25px;
+
+    font-weight: 800;
+
+    margin-bottom: 20px;
+}
+
+.feature-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 10px;
+}
+
+.feature {
+
+    background:
+        var(--card);
+
+    border:
+        1px solid
+        rgba(255,255,255,0.06);
+
+    border-radius: 18px;
+
+    padding: 20px;
+}
+
+.feature-icon {
+
+    font-size: 25px;
+
+    color: var(--blue);
+
+    margin-bottom: 15px;
+}
+
+.feature h3 {
+    font-size: 13px;
+}
+
+.feature p {
+
+    font-size: 11px;
+
+    color: var(--muted);
+
+    margin-top: 5px;
+}
+
+
+/* Тарифы */
+
+.pricing {
+    margin-bottom: 40px;
+}
+
+.price-card {
+
+    position: relative;
+
+    background:
+        linear-gradient(
+            160deg,
+            #111116,
+            #08080b
+        );
+
+    border:
+        1px solid
+        rgba(0, 234, 255, 0.25);
+
+    border-radius: 25px;
+
+    padding:
+        28px 22px;
+
+    margin-bottom: 15px;
+
+    overflow: hidden;
+}
+
+.price-card::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 180px;
+    height: 180px;
+
+    background:
+        var(--blue);
+
+    filter:
+        blur(100px);
+
+    opacity: 0.08;
+
+    top: -100px;
+    right: -80px;
+}
+
+.plan-tag {
+
+    color: white;
+
+    font-size: 20px;
+
+    font-weight: 900;
+
+    letter-spacing: 2px;
+}
+
+.old-price {
+
+    color: #55555e;
+
+    text-decoration:
+        line-through;
+
+    margin-top: 20px;
+}
+
+.price {
+
+    font-size: 42px;
+
+    font-weight: 900;
+
+    color: var(--blue);
+
+    margin:
+        2px 0 20px;
+
+    text-shadow:
+        0 0 20px
+        rgba(0, 234, 255, 0.2);
+}
+
+.price small {
+
+    font-size: 12px;
+
+    color: #777;
+
+    font-weight: 400;
+}
+
+.price-card ul {
+
+    list-style: none;
+
+    color: #d0d0d5;
+
+    line-height: 2;
+
+    margin-bottom: 20px;
+}
+
+.premium-card {
+
+    border-color:
+        rgba(139, 92, 255, 0.5);
+}
+
+.premium-buy {
+
+    background:
+        linear-gradient(
+            135deg,
+            #9b6cff,
+            #5b39ff
+        );
+
+    color: white;
+}
+
+.popular {
+
+    position: absolute;
+
+    right: 18px;
+    top: 18px;
+
+    color: #b195ff;
+
+    font-size: 8px;
+
+    letter-spacing: 1px;
+}
+
+
+/* Профиль */
+
+.user-card {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+
+    padding: 16px;
+
+    background: #0c0c10;
+
+    border-radius: 18px;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.05);
+}
+
+.user-avatar {
+
+    width: 43px;
+    height: 43px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #15151c;
+
+    color: var(--blue);
+}
+
+.user-name {
+    font-weight: 700;
+}
+
+.user-status {
+
+    color: var(--muted);
+
+    font-size: 10px;
+
+    margin-top: 3px;
+}
+
+
+/* Footer */
+
+footer {
+
+    text-align: center;
+
+    color: #3f3f47;
+
+    font-size: 10px;
+
+    margin-top: 30px;
+}
+
+
+/* Маленькие телефоны */
+
+@media (max-width: 380px) {
+
+    .hero h1 {
+        font-size: 36px;
+    }
+
+    .price {
+        font-size: 36px;
+    }
+
+}
+
+/* MUSIC LAB player */
+.upload-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    margin-top: 22px;
+    padding: 15px 18px;
+    border: 1px dashed rgba(0, 234, 255, 0.55);
+    border-radius: 16px;
+    color: var(--blue);
+    background: rgba(0, 234, 255, 0.06);
+    font-weight: 800;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.upload-btn:hover,
+.upload-btn:active {
+    background: rgba(0, 234, 255, 0.12);
+    transform: translateY(-1px);
+}
+
+.file-input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    clip-path: inset(50%);
+}
+
+.track-panel {
+    margin-top: 22px;
+    padding: 17px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 18px;
+    background: rgba(5, 5, 7, 0.55);
+    text-align: left;
+}
+
+.track-panel[hidden] {
+    display: none;
+}
+
+.track-info,
+.player-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.track-name {
+    overflow: hidden;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.track-status,
+.time-label {
+    flex: 0 0 auto;
+    color: var(--muted);
+    font-size: 11px;
+}
+
+.track-panel .audio-visualizer {
+    margin: 12px 0;
+}
+
+.play-btn {
+    min-width: 140px;
+}
+
+.play-btn:disabled,
+.effect-btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.45;
+}
+
+.seek-control,
+.range-control input {
+    width: 100%;
+    accent-color: var(--blue);
+}
+
+.seek-control {
+    margin: 8px 0 14px;
+}
+
+.audio-controls {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.range-control,
+.select-control {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    justify-content: center;
+    gap: 7px;
+    padding: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 12px;
+    color: var(--muted);
+    font-size: 11px;
+}
+
+.select-control select {
+    width: 100%;
+    padding: 5px;
+    border: 0;
+    border-radius: 7px;
+    color: #fff;
+    background: #17171e;
+    font: inherit;
+}
+
+.effect-btn {
+    min-height: 42px;
+    padding: 9px 7px;
+    border: 1px solid rgba(0, 234, 255, 0.22);
+    border-radius: 12px;
+    color: #d9fbff;
+    background: #101319;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.effect-btn.active {
+    border-color: var(--blue);
+    color: var(--blue);
+    background: rgba(0, 234, 255, 0.12);
+    box-shadow: 0 0 16px rgba(0, 234, 255, 0.1);
+}
+
+.privacy-note {
+    margin-top: 13px !important;
+    font-size: 10px;
+    line-height: 1.45;
+    text-align: center;
+}
+
+@media (max-width: 380px) {
+    .track-panel {
+        padding: 12px;
+    }
+
+    .audio-controls {
+        gap: 7px;
+    }
+
+    .play-btn {
+        min-width: 120px;
+    }
+}
+
+
+.cancel-subscription-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 12px;
+    padding: 9px 12px;
+    border: 1px solid rgba(255, 125, 125, 0.35);
+    border-radius: 10px;
+    color: #ffb0b0;
+    background: rgba(160, 35, 45, 0.12);
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.cancel-subscription-btn[hidden] {
+    display: none;
+}
+
+.cancel-subscription-btn:disabled {
+    opacity: 0.55;
+    cursor: wait;
+}
