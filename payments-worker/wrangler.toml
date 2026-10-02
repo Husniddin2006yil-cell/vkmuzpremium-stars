@@ -4,9 +4,9 @@ compatibility_date = "2026-10-02"
 workers_dev = true
 
 [vars]
-MINI_APP_URL = "https://vkmuzpremium-stars.pages.dev"
+MINI_APP_URL = "https://vkmuzpremium-stars.shamsiddinov07xz.workers.dev"
 
 [[d1_databases]]
 binding = "DB"
 database_name = "vkmuzpremium_stars"
-database_id = "40242619-57f6-48d3-ade6-50402707dde1"
+database_id = "REPLACE_WITH_DATABASE_ID"

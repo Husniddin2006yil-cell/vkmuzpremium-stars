@@ -1,17 +1,29 @@
 # Payments Worker
 
-Cloudflare Worker for authenticating Telegram Mini App sessions, creating recurring Telegram Stars invoices, processing Bot API webhook updates, and storing payments/subscriptions in D1.
+Cloudflare Worker для проверки Telegram Mini App, создания recurring Telegram Stars invoice, обработки Telegram webhook и хранения заказов/подписок в D1.
 
-Run from this directory:
+## Первое развертывание
+
+1. Из этой папки выполните `npx wrangler login` и войдите в Cloudflare аккаунт, которому принадлежит `shamsiddinov07xz.workers.dev`.
+2. Создайте D1 один раз: `npx wrangler d1 create vkmuzpremium_stars`.
+3. Скопируйте выданный ID в `wrangler.toml` вместо `REPLACE_WITH_DATABASE_ID`.
+4. Инициализируйте таблицы: `npx wrangler d1 execute vkmuzpremium_stars --remote --file=./schema.sql`.
+5. Добавьте токен бота как Secret: `npx wrangler secret put BOT_TOKEN`.
+6. Разверните Worker: `npx wrangler deploy`.
+
+Ожидаемый адрес: `https://vkmuzpremium-stars-payments.shamsiddinov07xz.workers.dev`. Mini App и `/start` настроены на `https://vkmuzpremium-stars.shamsiddinov07xz.workers.dev/`.
+
+## Безопасная проверка webhook
+
+`GET /health?check=telegram` проверяет D1, токен через `getMe` и соответствие текущего webhook — он не меняет настройки. Если webhook нужно переключить, `/setup` сначала показывает текущий адрес и ожидающие обновления; замену необходимо подтвердить явно, потому что она может отключить предыдущий сервер бота.
+
+Не публикуйте токен бота. Секрет хранится в Cloudflare как `BOT_TOKEN`.
+
+## Тесты
 
 ```bash
 npm test
 npx wrangler deploy --dry-run
-npx wrangler deploy
 ```
 
-The Worker uses the D1 binding `DB` configured in `wrangler.toml` and the secret `BOT_TOKEN`. Keep the bot token out of source control; set or rotate it with `npx wrangler secret put BOT_TOKEN`.
-
-`GET /health?check=telegram` verifies D1, the token via `getMe`, and whether Telegram's current webhook URL matches this Worker. It does not change the webhook. `/setup` offers a guarded inspect-then-confirm flow if the webhook needs to be switched. Switching replaces the bot's prior webhook, so inspect it before confirming.
-
-The `test/` suite mocks the Bot API and D1. No real Stars are charged by local tests.
+Локальные тесты имитируют Bot API и D1; реальные платежи не проводят.

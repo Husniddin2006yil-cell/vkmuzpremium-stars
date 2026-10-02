@@ -383,7 +383,7 @@ document
 // PRO / PREMIUM
 // ==========================================
 
-const PAYMENTS_API_URL = "https://vkmuzpremium-stars-payments.husniddin2006yil.workers.dev";
+const PAYMENTS_API_URL = "https://vkmuzpremium-stars-payments.shamsiddinov07xz.workers.dev";
 
 function showPaymentMessage(title, message) {
     if (tg?.showPopup) {
