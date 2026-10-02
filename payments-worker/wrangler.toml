@@ -9,4 +9,4 @@ MINI_APP_URL = "https://vkmuzpremium-stars.shamsiddinov07xz.workers.dev"
 [[d1_databases]]
 binding = "DB"
 database_name = "vkmuzpremium_stars"
-database_id = "REPLACE_WITH_DATABASE_ID"
+database_id = "f8a289d5-0e8f-442f-8d89-25b142270e5f"

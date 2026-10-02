@@ -4,12 +4,11 @@ Cloudflare Worker для проверки Telegram Mini App, создания re
 
 ## Первое развертывание
 
-1. Из этой папки выполните `npx wrangler login` и войдите в Cloudflare аккаунт, которому принадлежит `shamsiddinov07xz.workers.dev`.
-2. Создайте D1 один раз: `npx wrangler d1 create vkmuzpremium_stars`.
-3. Скопируйте выданный ID в `wrangler.toml` вместо `REPLACE_WITH_DATABASE_ID`.
-4. Инициализируйте таблицы: `npx wrangler d1 execute vkmuzpremium_stars --remote --file=./schema.sql`.
-5. Добавьте токен бота как Secret: `npx wrangler secret put BOT_TOKEN`.
-6. Разверните Worker: `npx wrangler deploy`.
+1. Выполните `npx wrangler login` и войдите в Cloudflare аккаунт, которому принадлежит `shamsiddinov07xz.workers.dev`.
+2. База `vkmuzpremium_stars` уже создана; её ID уже сохранён в `wrangler.toml`. Не запускайте `wrangler d1 create` повторно.
+3. Инициализируйте таблицы: `npx wrangler d1 execute vkmuzpremium_stars --remote --file=./schema.sql`.
+4. Добавьте токен бота как Secret: `npx wrangler secret put BOT_TOKEN`.
+5. Разверните Worker: `npx wrangler deploy`.
 
 Ожидаемый адрес: `https://vkmuzpremium-stars-payments.shamsiddinov07xz.workers.dev`. Mini App и `/start` настроены на `https://vkmuzpremium-stars.shamsiddinov07xz.workers.dev/`.
 

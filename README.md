@@ -27,31 +27,21 @@ npx wrangler login
 
 В открывшемся браузере войдите именно в Cloudflare аккаунт, где работает Mini App по адресу `https://vkmuzpremium-stars.shamsiddinov07xz.workers.dev/`. Если Wrangler показывает другой аккаунт, не продолжайте — сначала переключите Cloudflare login.
 
-### 2. Создать D1 и вписать её ID
+### 2. База D1 уже создана
 
-Создайте базу один раз:
-
-```bash
-npx wrangler d1 create vkmuzpremium_stars
-```
-
-Wrangler выведет database ID. Откройте `payments-worker/wrangler.toml` и замените:
-
-```toml
-database_id = "REPLACE_WITH_DATABASE_ID"
-```
-
-на настоящий ID только что созданной базы в **этом же аккаунте**. Не используйте ID от другого Cloudflare аккаунта.
+База `vkmuzpremium_stars` создана в аккаунте `Shamsiddinov07xz@gmail.com's Account`, а её ID уже записан в `payments-worker/wrangler.toml`. **Не создавайте вторую базу и не заменяйте этот ID.**
 
 ### 3. Инициализировать таблицы
 
-Из каталога `vkmuzpremium-stars/payments-worker` запустите:
+Из каталога `vkmuzpremium-stars/payments-worker` войдите именно в Cloudflare аккаунт владельца D1 и запустите:
 
 ```bash
+npx wrangler login
 npx wrangler d1 execute vkmuzpremium_stars --remote --file=./schema.sql
 ```
 
 Схема использует `CREATE TABLE IF NOT EXISTS`; повторное применение не удаляет существующие таблицы.
+Если Wrangler сообщает об отсутствии доступа, проверьте, что в открывшемся браузере выбран правильный Cloudflare аккаунт.
 
 ### 4. Добавить токен бота как Secret и развернуть Worker
 
